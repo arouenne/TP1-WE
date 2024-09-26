@@ -9,9 +9,27 @@ function Pencil(ctx, drawing, canvas) {
 
 	// Liez ici les widgets à la classe pour modifier les attributs présents ci-dessus.
 
+	document.getElementById('colour').onclick 
+	document.getElementById('butRect');
+	document.getElementById('butLine');
+	document.getElementById('spinnerWidth');
+
+
 	new DnD(canvas, this);
 
 	// Implémentez ici les 3 fonctions onInteractionStart, onInteractionUpdate et onInteractionEnd
+
+	this.onInteractionStart = function(dnd) {
+		
+	}
+
+	this.onInteractionUpdate = function(dnd) {
+
+	}
+
+	this.onInteractionEnd = function(dnd) {
+
+	}
 };
 
 

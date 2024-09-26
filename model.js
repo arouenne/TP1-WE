@@ -3,29 +3,37 @@
 // N'oubliez pas l'héritage !
 
 function Drawing() {
-    this.drawing = new Array();
-};
+    this.shapes = [];
 
-function Shape() {
-    this.color = null;
-    this.thickness = null;
+    this.getForms = function() {
+        return this.shapes;
+    }
 }
 
-function Rectangle(){
-    Shape.call(this)
-    this.x = 0;
-    this.y = 0;
-    this.height = 0;
-    this.width = 0;
-};
-
-function Line(){
-    Shape.call(this)
-    this.x_start = 0;
-    this.y_start = 0;
-    this.x_final = 0;
-    this.y_final = 0;
+function Shape(thickness, color){
+    this.color = color;
+    this.thickness = thickness;
 }
+
+function Rectangle(x, y, width, height, thickness, color){
+    Shape.call(this, thickness, color);
+    this.x = x;
+    this.y = y;
+    this.height = height;
+    this.width = width;
+}
+
+Rectangle.prototype = new Shape();
+
+function Line(x1, x2, y1, y2){
+    Shape.call(this);
+    this.x_start = x1;
+    this.y_start = y1;
+    this.x_final = x2;
+    this.y_final = y2;
+}
+
+Line.prototype = new Shape();
   
   
   
