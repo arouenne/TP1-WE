@@ -25,12 +25,12 @@ function Rectangle(x, y, width, height, thickness, color){
 
 Rectangle.prototype = new Shape();
 
-function Line(x1, x2, y1, y2){
-    Shape.call(this);
-    this.x_start = x1;
-    this.y_start = y1;
-    this.x_final = x2;
-    this.y_final = y2;
+function Line(initX, initY, finalX, finalY, thickness, color){
+    Shape.call(this, thickness, color);
+    this.x_start = initX;
+    this.y_start = initY;
+    this.x_final = finalX;
+    this.y_final = finalY;
 }
 
 Line.prototype = new Shape();
