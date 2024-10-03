@@ -8,6 +8,10 @@
     ctx.rect(this.x, this.y, this.width,  this.height);
     ctx.stroke();
   };
+
+  Rectangle.prototype.printShape = function() {
+    return `Rectangle - ${this.color} ${this.thickness} (${this.x}, ${this.y}, ${this.width}, ${this.height})`;
+  }
   
   Line.prototype.paint = function(ctx) {
     ctx.strokeStyle = this.color;
@@ -17,6 +21,10 @@
     ctx.lineTo(this.x_final,this.y_final);
     ctx.stroke();
   };
+
+  Line.prototype.printShape = function() {
+    return `Line - ${this.color} ${this.thickness} (${this.x_start}, ${this.y_start}, ${this.x_final}, ${this.y_final})`;
+  }
   
   Drawing.prototype.paint = function(ctx) {
     ctx.fillStyle = '#F0F0F0'; // set canvas' background color
@@ -28,7 +36,28 @@
     });
   };
 
-  function updateShapeList(shape) {
-    console.log('list updated');
-  }
+  function updateShapeList(shape, controller) {
+    var shapeList = document.getElementById('shapeList');
+    var entry = document.createElement('li');
+
+    var button = document.createElement('button');
+    button.setAttribute('type', 'button');
+    button.className = 'btn btn-default';
+
+    var icon = document.createElement('span');
+    icon.className = 'glyphicon glyphicon-remove-sign';
+    button.appendChild(icon);
+
+    button.onclick = function() {
+        controller.deleteShape(shape);
+        shapeList.removeChild(entry);
+    };
+
+    entry.appendChild(button);
+
+    var shapeText = document.createTextNode(" "+shape.printShape());
+    entry.appendChild(shapeText);
+    shapeList.appendChild(entry);
+}
+
   

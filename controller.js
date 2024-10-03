@@ -69,8 +69,16 @@ function Pencil(ctx, drawing, canvas) {
 		drawing.paint(ctx);
 		this.currentShape.paint(ctx);
 		
-		updateShapeList(this.currentShape);
+		updateShapeList(this.currentShape, this);
 	}.bind(this);
+
+    this.deleteShape = function(shape) {
+        var shapeIndex = drawing.shapes.indexOf(shape);
+        if (shapeIndex > -1) {
+            drawing.shapes.splice(shapeIndex, 1);
+            drawing.paint(ctx);
+        }
+    };
 };
 
 
